@@ -1,0 +1,56 @@
+body{
+
+}
+.login{
+    display: flex;
+    width: fit-content;
+    padding: 20px;
+    flex-direction: row;
+    justify-content: center;
+    background-color: lightcoral;
+    border-radius: 10px;
+    margin: auto;
+}
+input{
+    padding: 10px;
+    margin: 10px;
+}
+.login-btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+nav{
+    margin-bottom: 50px;
+    padding:20px 0px;
+    background-color: lightskyblue;
+}
+
+.nav-item{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+li a{
+    text-decoration: none;
+    color: rebeccapurple;
+    font-size: x-large;
+}
+
+.signup{
+    display: flex;
+    width: fit-content;
+    padding: 20px;
+    flex-direction: row;
+    justify-content: center;
+    background-color: lightcoral;
+    border-radius: 10px;
+    margin: auto;
+}
