@@ -15,10 +15,10 @@
     <nav>
         <div class="wrapper">
             <ul class="nav-item">
-                <li><a href="">Home</a></li>
-                <li><a href="">Info</a></li>
-                <li><a href="">Sign up</a></li>
-                <li><a href="">Log in</a></li>
+                <li><a href="">看看誰加入會員</a></li>
+                <li><a href="">帳戶資訊</a></li>
+                <li><a href="member_join.php">點我註冊</a></li>
+                <li><a href="index.php">登入</a></li>
             </ul>
         </div>
     </nav>

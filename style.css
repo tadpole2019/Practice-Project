@@ -1,5 +1,8 @@
 body{
-
+    min-width: 960px;
+}
+.title{
+    text-align: center;
 }
 .login{
     display: flex;
@@ -11,6 +14,15 @@ body{
     border-radius: 10px;
     margin: auto;
 }
+.signup{
+    display: flex;
+    width: fit-content;
+    padding: 20px;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 10px;
+    margin: auto;
+}
 input{
     padding: 10px;
     margin: 10px;
@@ -19,7 +31,10 @@ input{
     display: flex;
     justify-content: space-between;
 }
-
+.signup-btn{
+    width: fit-content;
+    margin: auto;
+}
 button{
     padding: 10px;
     border-radius: 10px;
@@ -44,13 +59,11 @@ li a{
     font-size: x-large;
 }
 
-.signup{
+.form-item{
     display: flex;
-    width: fit-content;
-    padding: 20px;
-    flex-direction: row;
-    justify-content: center;
-    background-color: lightcoral;
-    border-radius: 10px;
+    justify-content: space-between;
+}
+
+label{
     margin: auto;
 }
