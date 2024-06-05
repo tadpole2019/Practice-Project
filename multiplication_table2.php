@@ -1,6 +1,7 @@
 <?php
     $fs = true;
-    $a = [];
+    $a = 0;
+    $b = 0;
 
     do {
         if ($fs) {
@@ -10,11 +11,21 @@
         else {
             fwrite(STDOUT, '請重新輸入');
         }
+        $num = trim(fgets(STDIN));
+        $arr = explode(" ", $num);
+        $a = $arr[0];
+        $b = $arr[1];
+    } while ($a === 0 || $b === 0);
 
-        $a = trim(fgets(STDIN));
-
-    } while ($a === 0 or $b === 0);
-
-    echo [$a, $b];
+    for ($i=1;$i<$a+1;$i++){
+        for ($j=1;$j<$b+1;$j++){
+            if ($i*$j>=10) {
+                echo $i." x ".$j." = ".$i*$j." | ";
+            } else {
+                echo $i." x ".$j." = "." ".$i*$j." | ";
+            } 
+        };
+        print(PHP_EOL);
+    };
 
     ?>
