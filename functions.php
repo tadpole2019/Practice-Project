@@ -49,9 +49,10 @@
         try {
             $stmt = $conn->prepare($sql);
             $stmt->execute([$username, $email]);
+            $fetch = $stmt->fetch();
 
             if ($stmt->rowCount() > 0) {
-                return true;
+                return $fetch;
             } else {
                 return false;
             }
@@ -79,6 +80,104 @@
 
         } catch (PDOException $e) {
             header("location: ../membersystem/member_join.php?error=stmtfailed");
+            exit();
+        }
+    }
+
+    function emptyInputLogin($username, $pwd){
+        $result;
+        if (empty($username) || empty($pwd)) {
+            $result = true;
+        }
+        else {
+            $result = false;
+        }
+        return $result;
+    }
+
+    function loginUser($conn, $username, $pwd) {
+        $uidExists = uidExists($conn, $username, $username);
+
+        if ($uidExists === false) {
+            header("location: ../membersystem/index.php?error=wronglogin");
+            exit();
+        }
+
+        $pwdHashed = $uidExists["pwd"];
+        $checkPwd = password_verify($pwd, $pwdHashed);
+
+        if ($checkPwd === false) {
+            header("location: ../membersystem/index.php?error=wronglogin");
+            exit();
+        }
+        else if ($checkPwd === true) {
+            session_start();
+            $_SESSION["userid"] = $uidExists["id"];
+            $_SESSION["useruid"] = $uidExists["uid"];
+
+            header("location: ../membersystem/member_center.php");
+            exit();
+        }
+    }
+
+    function profileExists($conn, $users_id) {
+        $sql = "SELECT * FROM `member_profiles` WHERE `users_id` = ?;";
+
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$users_id]);
+            $fetch = $stmt->fetch();
+
+            if ($stmt->rowCount() > 0) {
+                return $fetch;
+            } else {
+                return false;
+            }
+
+        } catch (PDOException $e) {
+            header("location: ../membersystem/member_join.php?error=profileNotFound");
+            exit();
+        }
+    }
+
+    function setProfileInfo($conn, $about, $title, $content, $users_id){
+
+        try{
+            $sql = "INSERT INTO `member_profiles` (`profiles_about`, `profiles_introtitle`, `profiles_introtext`, `users_id`) VALUES (?, ?, ?, ?);";
+
+            $result = $conn->prepare($sql);
+            $result->execute([$about, $title, $content, $users_id]);
+        }catch(PDOException $e) {
+            header("location: ../membersystem/member_center.php?error=setfailed");
+            exit();
+        }
+    }
+
+    function updateProfileInfo($conn, $about, $title, $content, $users_id){
+
+        try{
+            $sql = "UPDATE `member_profiles` SET `profiles_about`=?, `profiles_introtitle`=?, `profiles_introtext`=? WHERE `users_id`=?;";
+
+            $result = $conn->prepare($sql);
+            $result->execute([$about, $title, $content, $users_id]);
+        }catch(PDOException $e) {
+
+            header("location: ../membersystem/member_center.php?error=updatefailed");
+            exit();
+        }
+    }
+
+    function deleteProfileInfo($conn, $users_id) {
+        try{
+            $sql = "DELETE FROM `member_profiles` WHERE `users_id`=?;";
+            $result = $conn->prepare($sql);
+            $result->execute([$users_id]);
+
+            header("location: ../membersystem/member_center.php");
+            exit();
+
+        }catch(PDOException $e) {
+            header("location: ../membersystem/member_center.php?error=deletefailed");
             exit();
         }
     }

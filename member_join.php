@@ -30,8 +30,37 @@
             <div class="signup-btn">
                 <button type="submit" name="submit">註冊</button>
             </div>
+            <div style="text-align:center;color:red">
+                <?php
+                    if (isset($_GET["error"])) {
+                        if ($_GET["error"] == "emptyinput") {
+                            echo "<p>請填寫表格!</p>";
+                        }
+                        else if ($_GET["error"] == "invaliduid") {
+                            echo "<p>請填寫英數大小寫的使用者名稱</p>";
+                        }
+                        else if ($_GET["error"] == "invalidemail") {
+                            echo "<p>請填寫正確且沒使用的郵箱地址!</p>";
+                        }
+                        else if ($_GET["error"] == "passwordsdontmatch") {
+                            echo "<p>再次填寫密碼不相同!</p>";
+                        }
+                        else if ($_GET["error"] == "usernametaken") {
+                            echo "<p>名稱已被其他人使用!</p>";
+                        }
+                        else if ($_GET["error"] == "none") {
+                            echo "<p>註冊成功!</p>";
+                        }
+                    }
+                ?>
+            </div>
         </form>
+
+
+
     </div>
+
+
 
 <?php 
     include_once("footer.php");

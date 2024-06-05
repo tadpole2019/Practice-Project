@@ -35,6 +35,13 @@ input{
     width: fit-content;
     margin: auto;
 }
+.delete-btn{
+    width: fit-content;
+    margin: auto;
+    button{
+        background-color: red;
+    }
+}
 button{
     padding: 10px;
     border-radius: 10px;
@@ -66,4 +73,13 @@ li a{
 
 label{
     margin: auto;
+}
+
+table, td, th{
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th, td{
+    padding: 15px;
 }
