@@ -36,6 +36,7 @@
         }
 
         createUser($conn, $name, $email, $username, $pwd);
+        header("location: ../membersystem/index.php?error=none");
     }
     else {
         header("location: ../membersystem/member_join.php");

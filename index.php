@@ -29,6 +29,9 @@
                         else if ($_GET["error"] == "wronglogin") {
                             echo "<p>帳號或密碼錯誤!</p>";
                         }
+                        else if ($_GET["error"] == "none") {
+                            echo "<p>註冊成功!</p>";
+                        }
                     }
                 ?>
     </div>

@@ -76,6 +76,7 @@
                 return false;
             }
 
+
             header("location: ../membersystem/member_join.php?error=none");
 
         } catch (PDOException $e) {
