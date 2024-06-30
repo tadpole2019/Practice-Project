@@ -19,8 +19,14 @@
 
 可直接使用sql檔匯入phpmyadmin  
 
-第一題是multiplication_table.php  
+# algorithm資料夾專門存放練習的程式碼
+
+1. multiplication_table.php  
 會直接印出九九乘法表  
-第二題是multiplication_table2.php  
+2. multiplication_table2.php  
 會先提示輸入兩個數字，以空白隔開，如:2 5  
-都在同一個專案裡  
+都在同一個專案裡
+3. indexof.js
+使用暴力演算法，比對string內有沒有指定的word，如果有就回傳位置，沒有就回傳-1
+4. lottery.js
+隨機抽取8個1-42的號碼，第8個當特別號
