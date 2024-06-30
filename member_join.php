@@ -1,12 +1,13 @@
 <?php 
     include_once("header.php");
+
 ?>
     <div class="title">
         <h2>註冊帳戶</h2>
     </div>
 
     <div class="signup">
-        <form action="doSignup.php" method="post">
+        <form action="includes/signup.inc.php" method="post">
             <div class="form-item">
                 <label for="name">姓名</label>
                 <input type="text" id="name" name="name" placeholder="請輸入您的姓名">
@@ -42,7 +43,7 @@
                         else if ($_GET["error"] == "invalidemail") {
                             echo "<p>請填寫正確且沒使用的郵箱地址!</p>";
                         }
-                        else if ($_GET["error"] == "passwordsdontmatch") {
+                        else if ($_GET["error"] == "pwddontmatch") {
                             echo "<p>再次填寫密碼不相同!</p>";
                         }
                         else if ($_GET["error"] == "usernametaken") {

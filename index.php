@@ -5,7 +5,7 @@
         <h2>帳戶登入</h2>
     </div>
     <div class="login">
-        <form action="doLogin.php" method="post">
+        <form action="includes/login.inc.php" method="post">
             <div class="form-item">
                 <label for="userid">帳號</label>
                 <input name="userid" type="text" placeholder="請輸入電子郵件或是帳戶名稱">
@@ -30,7 +30,7 @@
                             echo "<p>帳號或密碼錯誤!</p>";
                         }
                         else if ($_GET["error"] == "none") {
-                            echo "<p>註冊成功!</p>";
+                            echo "<p>登入成功!</p>";
                         }
                     }
                 ?>

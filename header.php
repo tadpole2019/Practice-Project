@@ -1,5 +1,4 @@
 <?php 
-    require_once("connMySQL.php");
     session_start();
 ?>
 
@@ -19,7 +18,7 @@
                 <?php 
                     if (isset($_SESSION["useruid"])) {
                         echo "<li><a href='member_center.php'>帳戶資訊</a></li>";
-                        echo "<li><a href='doLogout.php'>登出</a></li>";
+                        echo "<li><a href='includes/logout.inc.php'>登出</a></li>";
                     }
                     else {
                         echo "<li><a href='member_join.php'>註冊帳戶</a></li>";

@@ -1,6 +1,8 @@
 <?php 
     include_once("header.php");
-    include_once("functions.php");
+    // include_once("functions.php");
+    
+    include "includes/class-autoload.inc.php";
 ?>
     <div class="title">
         <h2>會員中心</h2>
@@ -12,13 +14,16 @@
     </div>
     <?php 
         $users_id = $_SESSION["userid"];
-        $profileExists = profileExists($conn, $users_id);
+        // $profileExists = profileExists($conn, $users_id);
+        $profileExists = new CreateProfileContr($users_id, $users_id, $users_id, $users_id);
+        $profileExists->profileExists();
+        
         if ($profileExists === false) : ?>
             <div class="title">
                 <h2>沒有 會員編號<?= $users_id ?> 的資料!</h2>
             </div>
             <div class="signup">
-                <form action="doAddProfile.php" method="post">
+                <form action="includes/createProfile.inc.php" method="post">
                     <div class="form-item">
                         <label for="profiles_about">關於我:</label>
                         <input type="text" name="profiles_about" id="profiles_about">
@@ -39,11 +44,14 @@
             `;
     <?php else : ?>
     <?php 
-        $sql = "SELECT * FROM `member_profiles` WHERE `users_id`=?;";
-        $result = $conn->prepare($sql);
-        $result->execute([$users_id]);
-        $row = $result->fetch(PDO::FETCH_ASSOC);
-        
+        // $sql = "SELECT * FROM `member_profiles` WHERE `users_id`=?;";
+        // $result = $conn->prepare($sql);
+        // $result->execute([$users_id]);
+        // $row = $result->fetch(PDO::FETCH_ASSOC);
+
+        $showuser = new UsersView();
+        $row = $showuser->showUser($users_id);
+
     ?>
         <table style="margin:auto">
             <tr>
@@ -59,13 +67,13 @@
                 <td><?= $row["profiles_introtext"] ?></td>
             </tr>
         </table>
-        <form action="doDeleteProfile.php" method="post">
+        <form action="includes/deleteProfile.inc.php" method="post">
             <div class="delete-btn">
                 <button type="delete" name="delete">刪除資料</button>
             </div>
         </form>
         <div class="signup">
-        <form action="doUpdateProfile.php" method="post">
+        <form action="includes/updateProfile.inc.php" method="post">
             <div class="form-item">
                 <label for="profiles_about">關於我:</label>
                 <input type="text" name="profiles_about" id="profiles_about">

@@ -1,14 +1,18 @@
 <?php 
     include_once("header.php");
+    include "includes/class-autoload.inc.php";
 ?>
 
 <?php
-    $sql = "SELECT `member_data`.`id`, `member_data`.`name`, `member_data`.`email`, `member_data`.`uid`, `member_profiles`.`profiles_about`, `member_profiles`.`profiles_introtitle`, `member_profiles`.`profiles_introtext`
-    FROM `member_data` LEFT JOIN `member_profiles`
-    ON `member_data`.`id` = `member_profiles`.`users_id`;";
-    $result = $conn->prepare($sql);
-    $result->execute();
-    $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+    // $sql = "SELECT `member_data`.`id`, `member_data`.`name`, `member_data`.`email`, `member_data`.`uid`, `member_profiles`.`profiles_about`, `member_profiles`.`profiles_introtitle`, `member_profiles`.`profiles_introtext`
+    // FROM `member_data` LEFT JOIN `member_profiles`
+    // ON `member_data`.`id` = `member_profiles`.`users_id`;";
+    // $result = $conn->prepare($sql);
+    // $result->execute();
+    // $rows = $result->fetchAll(PDO::FETCH_ASSOC);
+
+    $showallusers = new UsersView();
+    $rows = $showallusers->showAllUsers();
 ?>
     <div class="title">
         <h2>會員顯示</h2>
