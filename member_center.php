@@ -16,9 +16,9 @@
         $users_id = $_SESSION["userid"];
         // $profileExists = profileExists($conn, $users_id);
         $profileExists = new CreateProfileContr($users_id, $users_id, $users_id, $users_id);
-        $profileExists->profileExists();
         
-        if ($profileExists === false) : ?>
+        
+        if ($profileExists->profileExists() === false) : ?>
             <div class="title">
                 <h2>沒有 會員編號<?= $users_id ?> 的資料!</h2>
             </div>
