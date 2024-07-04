@@ -21,10 +21,10 @@
                 exit();
             }
 
-            // if($this->invalidUid() == false) {
-            //     header("location: /membersystem/member_join.php?error=invaliduid");
-            //     exit();
-            // }
+            if($this->invalidUid() == false) {
+                header("location: /membersystem/member_join.php?error=invaliduid");
+                exit();
+            }
 
             if($this->invalidEmail() == false) {
                 header("location: /membersystem/member_join.php?error=invalidemail");

@@ -14,6 +14,12 @@
                 <label for="password">密碼</label>
                 <input name="password" type="text" placeholder="請輸入密碼">
             </div>
+            <div class="form-item">
+                <label for="validcode">請輸入驗證碼</label>
+                <input name="validcode" type="text" placeholder="請輸入驗證碼">
+            </div>
+            <img src="includes/validCode.inc.php" style="width:100px;height:25px" alt="" id="code" />
+            <a href="javascript: changeCode()">看不清楚，換一張</a>
             <div class="login-btn">
                 <button type="submit" name="submit">登入</button>
                 <button>忘記密碼</button>
@@ -21,20 +27,43 @@
         </form>
     </div>
     <div style="text-align:center;color:red">
-                <?php
-                    if (isset($_GET["error"])) {
-                        if ($_GET["error"] == "emptyinput") {
-                            echo "<p>請填寫表格!</p>";
-                        }
-                        else if ($_GET["error"] == "wronglogin") {
-                            echo "<p>帳號或密碼錯誤!</p>";
-                        }
-                        else if ($_GET["error"] == "none") {
-                            echo "<p>登入成功!</p>";
-                        }
-                    }
-                ?>
+        <?php
+            if (isset($_GET["error"])) {
+
+                switch($_GET["error"]) {
+                    case "emptyinput":
+                        echo "<p>請填寫表格!</p>";
+                        break;
+                    case "validCodeError":
+                        echo "<p>驗證碼錯誤!</p>";
+                        break;
+                    case "wronglogin":
+                        echo "<p>帳號或密碼錯誤!</p>";
+                        break;
+                    case "none":
+                        echo "<p>註冊成功!</p>";
+                        break;
+                }
+                // if ($_GET["error"] == "emptyinput") {
+                //     echo "<p>請填寫表格!</p>";
+                // }
+                // else if ($_GET["error"] == "validCodeError") {
+                //     echo "<p>驗證碼錯誤!</p>";
+                // }
+                // else if ($_GET["error"] == "wronglogin") {
+                //     echo "<p>帳號或密碼錯誤!</p>";
+                // }
+                // else if ($_GET["error"] == "none") {
+                //     echo "<p>登入成功!</p>";
+                // }
+            }
+        ?>
     </div>
 <?php 
     include_once("footer.php");
 ?>
+<script>
+    function changeCode() {
+        document.getElementById("code").src = "includes/validCode.inc.php?"+Math.random();
+    }
+</script>

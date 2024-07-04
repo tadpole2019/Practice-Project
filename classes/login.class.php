@@ -41,7 +41,7 @@
                 }
 
                 $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                session_start();
+
                 $_SESSION["userid"] = $user[0]["id"];
                 $_SESSION["useruid"] = $user[0]["uid"];
             }
