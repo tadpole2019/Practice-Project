@@ -1,5 +1,14 @@
 <?php 
     include_once("header.php");
+    require 'vendor/autoload.php';
+    use Firebase\JWT\JWT;
+    use Firebase\JWT\Key;
+
+    $key = 'Nn8XDFLBAEbapZF5TLGsAuLhzqJsAx5qQfHY6KcAfvDHZJrQ5MZzHrBrg4kjDUAspL7NA4sDrRTvi8xTM3hShftbH9uF93WoXSt6KakWsCAqj2Api8fAJqm2R9Ak3nir';
+
+    if (isset($_COOKIE['token'])) {
+        $decoded = JWT::decode($token, new Key($key, 'HS256'));
+    }
 ?>
     <div class="title">
         <h2>帳戶登入</h2>
@@ -22,7 +31,7 @@
             <a href="javascript: changeCode()">看不清楚，換一張</a>
             <div class="login-btn">
                 <button type="submit" name="submit">登入</button>
-                <button>忘記密碼</button>
+                <a href="change_password.php">忘記密碼</a>
             </div>
         </form>
     </div>

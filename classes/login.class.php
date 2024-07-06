@@ -1,4 +1,8 @@
 <?php
+    require '../vendor/autoload.php';
+    use Firebase\JWT\JWT;
+?>
+<?php
     class Login extends Dbh{
 
         protected function getUser($uid, $pwd){
@@ -44,6 +48,22 @@
 
                 $_SESSION["userid"] = $user[0]["id"];
                 $_SESSION["useruid"] = $user[0]["uid"];
+                $key = 'Nn8XDFLBAEbapZF5TLGsAuLhzqJsAx5qQfHY6KcAfvDHZJrQ5MZzHrBrg4kjDUAspL7NA4sDrRTvi8xTM3hShftbH9uF93WoXSt6KakWsCAqj2Api8fAJqm2R9Ak3nir';
+                $token = JWT::encode(
+                    array(
+                        'iat'   => time(),
+                        'nbf'   => time(),
+                        'exp'   => time() + 3600,
+                        'data'  => array(
+                                        'user_id'   => $user[0]["id"],
+                                        'user_name' => $user[0]["uid"]
+                                        )
+                        ),
+                        $key,
+                        'HS256'
+                );
+
+                setcookie("token", $token, time() + 3600, "/", "", true, true);
             }
 
             $stmt = null;
