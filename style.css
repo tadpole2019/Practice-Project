@@ -31,7 +31,7 @@ input{
 }
 .login-btn{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .signup-btn{
     width: fit-content;

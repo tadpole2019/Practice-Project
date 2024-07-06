@@ -30,10 +30,12 @@
             <img src="includes/validCode.inc.php" style="width:100px;height:25px" alt="" id="code" />
             <a href="javascript: changeCode()">看不清楚，換一張</a>
             <div class="login-btn">
-                <button type="submit" name="submit">登入</button>
-                <a href="change_password.php">忘記密碼</a>
+                <button type="submit" name="submit" value="login">登入</button>
+                <button type="submit" name="forgetpw" value="forgetpw">忘記密碼</button>
             </div>
         </form>
+
+
     </div>
     <div style="text-align:center;color:red">
         <?php

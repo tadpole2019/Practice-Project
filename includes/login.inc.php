@@ -1,6 +1,5 @@
 <?php
     if(isset($_POST["submit"])){
-
         $username = $_POST["userid"];
         $pwd = $_POST["password"];
         $validcode = $_POST["validcode"];
@@ -14,6 +13,10 @@
         // header("location: /membersystem/index.php?error=none");
         echo "登入成功!";
         header("Refresh:1; url= /membersystem/member_center.php?error=none", true, 303);
+    }
+    else{
+        header("location: /membersystem/change_password.php");
+        exit();
     }
 
 ?>
