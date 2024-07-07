@@ -17,7 +17,24 @@
             </div>
         </form>
     </div>
+    <div style="text-align:center;color:red">
+    <?php
+    if (isset($_GET["error"])) {
 
+        switch($_GET["error"]) {
+            case "emptyinput":
+                echo "<p>請填寫表格!</p>";
+                break;
+            case "invalidemail":
+                echo "<p>電子郵件格式錯誤!</p>";
+                break;
+            case "unknownemail":
+                echo "<p>電子信箱未註冊!</p>";
+                break;
+        }
+    }
+    ?>
+    </div>
 <?php 
     include_once("footer.php");
 ?>

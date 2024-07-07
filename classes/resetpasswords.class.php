@@ -7,6 +7,7 @@
         public function __construct(){
             $this->resetModel = new ResetPassword;
             $this->userModel = new User;
+            
         }
     }
 ?>

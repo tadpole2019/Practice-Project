@@ -16,6 +16,30 @@ class Mail extends PHPMailer\PHPMailer {
         $this->Password = $Password;
     }
 
+    public function sendemail(){
+        $mail = new PHPMailer(true);
+
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        $mail->Username = "postmanjhan@gmail.com";
+        $mail->Password = "byvm klzo ucus aizx";
+
+        $mail->setFrom($email, $name);
+        $mail->addAddress($email);
+
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+
+        $mail->send();
+    }
+
     public function subject($subject) {
         $this->Subject = $subject;
     }
